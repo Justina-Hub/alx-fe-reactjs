@@ -11,7 +11,7 @@ function App() {
             <Header />
             <WelcomeMessage />
             <MainContent />
-            <UserProfile name="Justina" age="24" bio="Loves coding and business" />
+            <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
             <Footer />
         </>
     );
