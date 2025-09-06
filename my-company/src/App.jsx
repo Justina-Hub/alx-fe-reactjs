@@ -4,7 +4,6 @@ import Home from './Home';
 import About from './About';
 import Services from './Services';
 import Contact from './Contact';
-import Footer from './Footer';
 
 function App() {
   return (
@@ -15,7 +14,6 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/Footer" element={<Footer />} />
       </Routes>
     </Router>
   );
