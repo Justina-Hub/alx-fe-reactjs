@@ -7,7 +7,13 @@ export const useRecipeStore = create((set) => ({
   favorites: [],
   recommendations: [],
 
-  // --- Recipe Management ---
+  // Required by Task 1
+  setRecipes: (recipes) =>
+    set(() => ({
+      recipes,
+      filteredRecipes: recipes,
+    })),
+
   addRecipe: (recipe) =>
     set((state) => {
       const newRecipes = [...state.recipes, recipe];
@@ -46,7 +52,6 @@ export const useRecipeStore = create((set) => ({
       return { searchTerm: term, filteredRecipes: filtered };
     }),
 
-  // --- Favorites Management ---
   addFavorite: (recipeId) =>
     set((state) => ({
       favorites: state.favorites.includes(recipeId)
@@ -59,7 +64,6 @@ export const useRecipeStore = create((set) => ({
       favorites: state.favorites.filter((id) => id !== recipeId),
     })),
 
-  // --- Recommendations (simple mock logic) ---
   generateRecommendations: () =>
     set((state) => {
       const recommended = state.recipes.filter(

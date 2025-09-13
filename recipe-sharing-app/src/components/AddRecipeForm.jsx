@@ -2,38 +2,39 @@ import { useState } from 'react';
 import { useRecipeStore } from './recipeStore';
 
 const AddRecipeForm = () => {
-  const addRecipe = useRecipeStore((state) => state.addRecipe);
-
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const addRecipe = useRecipeStore((state) => state.addRecipe);
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    if (!title || !description) return alert("Please fill in all fields!");
+    event.preventDefault(); 
+    if (!title.trim()) return;
 
-    addRecipe({ id: Date.now(), title, description });
+    const newRecipe = {
+      id: Date.now().toString(),
+      title,
+      description,
+    };
+
+    addRecipe(newRecipe);
     setTitle('');
     setDescription('');
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-2 border p-2 my-2">
+    <form onSubmit={handleSubmit}>
       <input
         type="text"
+        placeholder="Recipe Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        placeholder="Title"
-        className="border p-1"
       />
       <textarea
+        placeholder="Recipe Description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        placeholder="Description"
-        className="border p-1"
       />
-      <button type="submit" className="bg-blue-500 text-white p-1 rounded">
-        Add Recipe
-      </button>
+      <button type="submit">Add Recipe</button>
     </form>
   );
 };
