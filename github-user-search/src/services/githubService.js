@@ -1,9 +1,18 @@
 import axios from "axios";
 
-export const fetchUserData = async (username) => {
+// Advanced search function
+export const advancedUserSearch = async (username, location, minRepos) => {
   try {
-    const response = await axios.get(`https://api.github.com/users/${username}`);
-    return response.data;
+    let query = "";
+
+    if (username) query += `${username} in:login `;
+    if (location) query += `location:${location} `;
+    if (minRepos) query += `repos:>=${minRepos}`;
+
+    const response = await axios.get(
+      `https://api.github.com/search/users?q=${encodeURIComponent(query)}`
+    );
+    return response.data; // returns { total_count, items: [...] }
   } catch (error) {
     throw error;
   }
