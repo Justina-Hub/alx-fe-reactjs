@@ -3,23 +3,21 @@ import { fetchUserData } from "../services/githubService";
 
 function Search() {
   const [username, setUsername] = useState("");
-  const [user, setUser] = useState(null);
+  const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!username.trim()) return;
-
     setLoading(true);
-    setError("");
-    setUser(null);
+    setError(false);
+    setUserData(null);
 
     try {
       const data = await fetchUserData(username);
-      setUser(data);
+      setUserData(data);
     } catch (err) {
-      setError("Looks like we can't find the user");
+      setError(true);
     } finally {
       setLoading(false);
     }
@@ -27,25 +25,23 @@ function Search() {
 
   return (
     <div>
-      {/* Search form */}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Enter GitHub username"
           value={username}
+          placeholder="Enter GitHub username"
           onChange={(e) => setUsername(e.target.value)}
         />
         <button type="submit">Search</button>
       </form>
 
-      {/* Conditional rendering */}
       {loading && <p>Loading...</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      {user && (
-        <div style={{ marginTop: "20px" }}>
-          <img src={user.avatar_url} alt={user.login} width="100" />
-          <h3>{user.login}</h3>
-          <a href={user.html_url} target="_blank" rel="noreferrer">
+      {error && <p>Looks like we cant find the user</p>}
+      {userData && (
+        <div>
+          <img src={userData.avatar_url} alt={userData.login} width="100" />
+          <p>{userData.name || userData.login}</p>
+          <a href={userData.html_url} target="_blank" rel="noreferrer">
             View Profile
           </a>
         </div>
