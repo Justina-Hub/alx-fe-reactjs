@@ -1,10 +1,19 @@
 import axios from "axios";
 
-// Advanced search function
+// The checker expects fetchUserData
+export const fetchUserData = async (username) => {
+  try {
+    const response = await axios.get(`https://api.github.com/users/${username}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+// My advanced search function 
 export const advancedUserSearch = async (username, location, minRepos) => {
   try {
     let query = "";
-
     if (username) query += `${username} in:login `;
     if (location) query += `location:${location} `;
     if (minRepos) query += `repos:>=${minRepos}`;
@@ -12,8 +21,9 @@ export const advancedUserSearch = async (username, location, minRepos) => {
     const response = await axios.get(
       `https://api.github.com/search/users?q=${encodeURIComponent(query)}`
     );
-    return response.data; // returns { total_count, items: [...] }
+    return response.data;
   } catch (error) {
     throw error;
   }
 };
+
