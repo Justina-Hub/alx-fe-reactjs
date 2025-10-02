@@ -17,14 +17,14 @@ function RecipeDetail() {
   }
 
   return (
-    <div className="p-6 max-w-3xl mx-auto">
+    <div className="max-w-3xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
       <img
         src={recipe.image}
         alt={recipe.title}
         className="w-full h-64 object-cover rounded-lg mb-6"
       />
       <h1 className="text-3xl font-bold mb-4">{recipe.title}</h1>
-      <p className="text-gray-700 mb-6">{recipe.summary}</p>
+      <p className="w-full h-64 object-cover rounded-lg shadow mb-6">{recipe.summary}</p>
 
       {/* Ingredients */}
       <div className="mb-6">
