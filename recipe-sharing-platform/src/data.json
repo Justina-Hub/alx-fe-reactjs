@@ -3,24 +3,88 @@
     "id": 1,
     "title": "Spaghetti Carbonara",
     "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-    "image": "/images/Spaghetti.jpg"   
+    "image": "/images/Spaghetti.jpg",
+    "ingredients": [
+      "200g spaghetti",
+      "100g pancetta",
+      "2 eggs",
+      "50g parmesan cheese",
+      "Black pepper"
+    ],
+    "instructions": [
+      "Cook spaghetti until all done.",
+      "Fry pancetta until crisp.",
+      "Mix eggs and cheese together.",
+      "Combine spaghetti, pancetta, and egg mixture.",
+      "Serve with black pepper."
+    ]
   },
   {
     "id": 2,
     "title": "Chicken Tikka Masala",
     "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
-    "image": "/images/chicken-tikka.jpg"
+    "image": "/images/chicken-tikka.jpg",
+    "ingredients": [
+      "500g chicken breast",
+      "1 cup yogurt",
+      "2 tbsp tikka masala paste",
+      "1 cup tomato puree",
+      "1/2 cup cream"
+    ],
+    "instructions": [
+      "Marinate chicken in yogurt and tikka masala paste.",
+      "Grill chicken until cooked through.",
+      "Simmer tomato puree and spices.",
+      "Add chicken and cream to sauce.",
+      "Serve with rice or naan."
+    ]
   },
   {
     "id": 3,
     "title": "Avocado Toast",
     "summary": "Toasted bread topped with smashed avocado, lemon juice, and chili flakes.",
-    "image": "/images/avocado-toast.jpg"
+    "image": "/images/avocado-toast.jpg",
+    "ingredients": [
+      "1 ripe Avocado",
+      "2 slices thick-cut bread",
+      "2 tbsp tikka masala paste",
+      "½ fresh lemon or lime",
+      "Extra-virgin olive oil",
+      "Flaky sea salt",
+      "Freshly ground black pepper"
+    ],
+    "instructions": [
+      "Toast the bread: Place the bread in a toaster or pan and toast to your preferred level of crispiness.",
+      "Prepare the avocado: Cut the avocado in half, remove the pit, and scoop the flesh into a bowl. Squeeze the lemon or lime juice over it to add brightness and prevent browning.",
+      "Mash and season: Using a fork, mash the avocado to your desired consistency—some prefer a smoother texture, while others like it chunky. Mix in a pinch of salt and pepper.",
+      "Assemble and serve: Spread the seasoned avocado mash evenly over the toast. Drizzle with a touch of extra-virgin olive oil and add a final sprinkle of flaky sea salt and pepper. "
+    ]
   },
   {
     "id": 4,
     "title": "Pancakes with Berries",
     "summary": "Fluffy pancakes stacked with fresh berries and maple syrup.",
-    "image": "/images/pancakes.jpg"
+    "image": "/images/pancakes.jpg",
+    "ingredients": [
+    "1 ¼ cups all-purpose flour",
+    "1 tablespoon baking powder",
+    "1 ¼ teaspoons white sugar",
+    "½ teaspoon salt",
+    "1 cup milk",
+    "1 large egg",
+    "½ tablespoon butter, melted",
+    "½ cup fresh or frozen blueberries, thawed"
+    ],
+    "instructions": [
+      "Sift flour, baking powder, sugar, and salt together in a large bowl.",
+      "Combine milk and egg in a small bowl.",
+      "Stir egg mixture into flour mixture until just combined.",
+      "Stir in melted butter, then fold in blueberries.",
+      "For best results, set the batter aside for 1 hour.",
+      "Heat a lightly oiled griddle or nonstick frying pan over medium-high heat.",
+      "Pour or scoop the batter onto the hot griddle, using approximately 1/4 cup for each pancake",
+      "Cook until bubbles appear on the surface, then flip and cook until golden brown on both sides.",
+      "Serve hot."
+    ]
   }
 ]
