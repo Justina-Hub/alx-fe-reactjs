@@ -1,17 +1,23 @@
 import { useQuery } from "@tanstack/react-query";
 
+// ✅ 1. Define the fetch function separately
+const fetchPosts = async () => {
+  const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+  if (!response.ok) {
+    throw new Error("Network response was not ok");
+  }
+  return response.json();
+};
+
 function PostsComponent() {
-  const { data, isLoading, isError, refetch } = useQuery({
+  // ✅ 2. Destructure "error" and call fetchPosts in useQuery
+  const { data, isLoading, isError, error, refetch } = useQuery({
     queryKey: ["posts"],
-    queryFn: async () => {
-      const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-      if (!res.ok) throw new Error("Network response was not ok");
-      return res.json();
-    },
+    queryFn: fetchPosts,
   });
 
   if (isLoading) return <p>Loading posts...</p>;
-  if (isError) return <p>Error fetching posts.</p>;
+  if (isError) return <p>Error: {error.message}</p>;
 
   return (
     <div className="p-4">
