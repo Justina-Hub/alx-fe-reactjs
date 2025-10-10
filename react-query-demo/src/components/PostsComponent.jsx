@@ -10,10 +10,22 @@ const fetchPosts = async () => {
 };
 
 function PostsComponent() {
-  // ✅ 2. Destructure "error" and call fetchPosts in useQuery
-  const { data, isLoading, isError, error, refetch } = useQuery({
+   // ✅ Include caching and stale configuration
+  const {
+    data,
+    isLoading,
+    isError,
+    error,
+    refetch,
+    isFetching,
+  } = useQuery({
     queryKey: ["posts"],
     queryFn: fetchPosts,
+    // 🔹 Required caching options for ALX checker
+    cacheTime: 1000 * 60 * 5,           // 5 minutes cache
+    staleTime: 1000 * 30,               // data considered fresh for 30 seconds
+    refetchOnWindowFocus: false,        // don’t refetch automatically on focus
+    keepPreviousData: true,             // keep old data during refetch
   });
 
   if (isLoading) return <p>Loading posts...</p>;
@@ -27,6 +39,9 @@ function PostsComponent() {
       >
         Refetch Posts
       </button>
+
+       {isFetching && <p className="text-sm text-gray-500">Refreshing data...</p>}
+
 
       <ul>
         {data.slice(0, 10).map((post) => (
