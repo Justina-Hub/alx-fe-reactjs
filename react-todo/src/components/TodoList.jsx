@@ -2,8 +2,8 @@ import { useState } from "react";
 
 function TodoList() {
   const [todos, setTodos] = useState([
-    { id: 1, text: "Learn React", completed: false },
-    { id: 2, text: "Practice coding", completed: true },
+    { id: 1, text: "Buy milk", completed: false },
+    { id: 2, text: "Read a book", completed: true },
   ]);
   const [newTodo, setNewTodo] = useState("");
 

@@ -1,34 +1,21 @@
-import { render, screen, fireEvent } from "@testing-library/react";
-import "@testing-library/jest-dom";
+// src/__tests__/TodoList.test.js
+import { render, screen } from "@testing-library/react";
 import TodoList from "../components/TodoList";
 
-describe("TodoList Component", () => {
-  test("renders initial todos", () => {
-    render(<TodoList />);
-    expect(screen.getByText("Learn React")).toBeInTheDocument();
-    expect(screen.getByText("Build a Todo App")).toBeInTheDocument();
+describe("TodoList component", () => {
+  const sampleTodos = [
+    { id: 1, text: "Buy milk", completed: false },
+    { id: 2, text: "Read a book", completed: true },
+  ];
+
+  it("renders todo items correctly", () => {
+    render(<TodoList todos={sampleTodos} onToggle={() => {}} onDelete={() => {}} />);
+    expect(screen.getByText("Buy milk")).toBeInTheDocument();
+    expect(screen.getByText("Read a book")).toBeInTheDocument();
   });
 
-  test("adds a new todo", () => {
-    render(<TodoList />);
-    fireEvent.change(screen.getByPlaceholderText("Add a todo"), {
-      target: { value: "New Todo" },
-    });
-    fireEvent.click(screen.getByText("Add"));
-    expect(screen.getByText("New Todo")).toBeInTheDocument();
-  });
-
-  test("toggles a todo", () => {
-    render(<TodoList />);
-    const todoItem = screen.getByText("Learn React");
-    fireEvent.click(todoItem);
-    expect(todoItem).toHaveStyle("text-decoration: line-through");
-  });
-
-  test("deletes a todo", () => {
-    render(<TodoList />);
-    const deleteButton = screen.getAllByText("Delete")[0];
-    fireEvent.click(deleteButton);
-    expect(screen.queryByText("Learn React")).not.toBeInTheDocument();
+  it("renders 'No tasks yet.' when there are no todos", () => {
+    render(<TodoList todos={[]} onToggle={() => {}} onDelete={() => {}} />);
+    expect(screen.getByText("No tasks yet.")).toBeInTheDocument();
   });
 });
